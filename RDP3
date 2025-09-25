@@ -1,0 +1,22 @@
+name: RDP3
+
+on:
+  workflow_dispatch:
+
+jobs:
+  secure-rdp:
+    # --------------------------
+    # Hardware Notes (for self-hosted runner):
+    # --------------------------
+    # RAM: 16 GB
+    # GPU: 8 GB
+    # Storage: 500 GB NVMe SSD
+    runs-on: windows-latest
+    timeout-minutes: 3600
+
+    steps:
+      - name: Configure Core RDP Settings
+        run: |
+          # Enable Remote Desktop and disable Network Level Authentication (if needed)
+          Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' `
+                             -Name "f
